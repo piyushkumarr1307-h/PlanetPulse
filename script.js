@@ -228,7 +228,13 @@ function renderHistory() {
     .join("");
 }
 
+function deleteActivity(id) {
+  activities = activities.filter(activity => activity.id !== id);
 
+  saveData();
+  updateDashboard();
+  renderHistory();
+}
 activityForm.addEventListener("submit", function(event) {
   event.preventDefault();
 
