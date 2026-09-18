@@ -219,6 +219,9 @@ function renderHistory() {
           <strong>
             ${activity.emission.toFixed(2)} kg CO₂
           </strong>
+          <button onclick="deleteActivity(${activity.id})">
+  Delete
+</button>
         </div>
       `;
     })
