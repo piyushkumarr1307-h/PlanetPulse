@@ -1,1 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlanetPulse - Carbon Footprint Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+  <header class="navbar">
+    <div class="logo">🌍 PlanetPulse</div>
+    <div class="tagline">Track your impact. Make a difference.</div>
+  </header>
+
+  <main class="container">
+
+    <!-- Dashboard -->
+    <section class="dashboard">
+      <div class="card total-card">
+        <h2>Total Footprint</h2>
+        <div class="total-value">
+          <span id="totalFootprint">0</span>
+          <small>kg CO₂</small>
+        </div>
+        <p>Your recorded carbon impact</p>
+      </div>
+
+      <div class="card target-card">
+        <h2>Weekly Target</h2>
+
+        <div class="target-row">
+          <input
+            type="number"
+            id="weeklyTarget"
+            placeholder="Enter target (kg)"
+            min="1"
+          >
+          <button id="setTargetBtn">Set Target</button>
+        </div>
+
+        <div class="progress-container">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <p id="progressText">Set a weekly target to track your progress.</p>
+      </div>
+    </section>
+
+
+    <!-- Add Activity -->
+    <section class="card activity-section">
+      <h2>➕ Add Activity</h2>
+
+      <form id="activityForm">
+
+        <div class="form-group">
+          <label for="activityType">Activity Type</label>
+
+          <select id="activityType" required>
+            <option value="">Select activity</option>
+            <option value="flight">✈️ Flight</option>
+            <option value="bus">🚌 Bus</option>
+            <option value="plant">🌱 Plant</option>
+            <option value="electricity">⚡ Electricity</option>
+            <option value="vegMeal">🥗 Veg Meal</option>
+            <option value="nonVegMeal">🍗 Non-Veg Meal</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+
+          <input
+            type="number"
+            id="quantity"
+            placeholder="Enter quantity"
+            min="0"
+            step="0.1"
+            required
+          >
+        </div>
+
+        <button type="submit" class="primary-btn">
+          Add Activity
+        </button>
+
+      </form>
+
+      <p id="inputMessage" class="message"></p>
+    </section>
+
+
+    <!-- Category Breakdown -->
+    <section class="card">
+      <h2>📊 Category Breakdown</h2>
+
+      <div class="category-grid">
+
+        <div class="category-item">
+          <span>✈️ Travel</span>
+          <strong id="travelTotal">0 kg</strong>
+        </div>
+
+        <div class="category-item">
+          <span>🍽️ Food</span>
+          <strong id="foodTotal">0 kg</strong>
+        </div>
+
+        <div class="category-item">
+          <span>⚡ Electricity</span>
+          <strong id="electricityTotal">0 kg</strong>
+        </div>
+
+        <div class="category-item">
+          <span>🌱 Plants</span>
+          <strong id="plantTotal">0 kg</strong>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- History -->
+    <section class="card">
+      <div class="history-header">
+        <h2>🕘 Activity History</h2>
+
+        <div class="filters">
+          <select id="filterType">
+            <option value="all">All Types</option>
+            <option value="flight">Flight</option>
+            <option value="bus">Bus</option>
+            <option value="plant">Plant</option>
+            <option value="electricity">Electricity</option>
+            <option value="vegMeal">Veg Meal</option>
+            <option value="nonVegMeal">Non-Veg Meal</option>
+          </select>
+
+          <input type="date" id="filterDate">
+        </div>
+      </div>
+
+      <div id="historyList" class="history-list">
+        <p class="empty-message">
+          No activities recorded yet.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- Nudge -->
+    <section id="nudge" class="nudge hidden">
+      <h3>⚠️ Weekly Target Alert</h3>
+      <p id="nudgeMessage"></p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>🌍 PlanetPulse — Small choices, meaningful impact.</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
