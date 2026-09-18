@@ -186,9 +186,15 @@ function renderHistory() {
 
   if (selectedDate) {
   filteredActivities = filteredActivities.filter(activity => {
-    const activityDate = new Date(activity.date);
-    const localDate = activityDate.toLocaleDateString("en-CA");
-    return localDate === selectedDate;
+    const d = new Date(activity.date);
+
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+
+    const activityDate = `${year}-${month}-${day}`;
+
+    return activityDate === selectedDate;
   });
 }
 
