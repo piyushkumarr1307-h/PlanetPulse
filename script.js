@@ -185,10 +185,12 @@ function renderHistory() {
   }
 
   if (selectedDate) {
-    filteredActivities = filteredActivities.filter(activity => {
-      return activity.date.startsWith(selectedDate);
-    });
-  }
+  filteredActivities = filteredActivities.filter(activity => {
+    const activityDate = new Date(activity.date);
+    const localDate = activityDate.toLocaleDateString("en-CA");
+    return localDate === selectedDate;
+  });
+}
 
   filteredActivities.sort(
     (a, b) => new Date(b.date) - new Date(a.date)
